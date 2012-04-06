@@ -1,0 +1,15 @@
+%p
+  %strong= t("activerecord.attributes.album.title", :default => t("activerecord.labels.title", :default => "Title")) + ":"
+  %br
+  = @album.title
+%p
+  %strong= t("activerecord.attributes.album.description", :default => t("activerecord.labels.description", :default => "Description")) + ":"
+  %br
+  = @album.description
+%p
+  = link_to t("activerecord.attributes.album.photos"), album_photos_path(@album)
+
+.form-actions
+  = link_to "Back", albums_path, :class => 'btn'
+  = link_to "Edit", edit_album_path(@album), :class => 'btn'
+  = link_to "Delete", album_path(@album), :method => "delete", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}", :class => 'btn btn-danger'

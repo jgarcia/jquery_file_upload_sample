@@ -1,0 +1,21 @@
+%h1 Photos
+%table.table.table-striped
+  %thead
+    %tr
+      %th ID
+      %th
+        = t("activerecord.attributes.photo.caption", :default => t("activerecord.labels.caption", :default => "Caption"))
+      %th Created at
+      %th Actions
+  %tbody
+    - @photos.each do |photo|
+      %tr
+        %td= photo.id
+        %td= link_to photo.caption, album_photo_path(@album, photo)
+        %td= photo.created_at
+        %td
+          = link_to "Show", album_photo_path(@album, photo), :class => 'btn btn-mini'
+          = link_to "Edit", edit_album_photo_path(@album, photo), :class => 'btn btn-mini'
+          = link_to "Destroy", album_photo_path(@album, photo), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}", :class => 'btn btn-mini btn-danger' 
+
+= link_to "New", new_album_photo_path, :class => 'btn btn-primary'

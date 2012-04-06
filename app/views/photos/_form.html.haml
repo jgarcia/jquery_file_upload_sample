@@ -1,0 +1,12 @@
+= simple_form_for [@album, @photo], :html => { :class => 'form-horizontal', multipart:true } do |f|
+  %fieldset
+    %legend
+      = controller.action_name.capitalize
+      Photo
+
+      = f.input :caption
+      = f.input :file
+
+    .form-actions
+      = f.submit nil, :class => 'btn btn-primary'
+      = link_to "Cancel", album_photos_path(@album), :class => 'btn'
