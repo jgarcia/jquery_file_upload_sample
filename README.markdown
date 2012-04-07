@@ -1,6 +1,6 @@
 # Jquery file Upload
 
-For a while I've been having the idea of setting up a multi file upload on a cms application I'm working on; I read about jquery file upload, but never got around to read the documentation and do an exercise. 
+For a while I've been having the idea of setting up a multi file upload on a cms application I'm working on; I read about [jquery file upload](http://blueimp.github.com/jQuery-File-Upload/) a while ago, but never got around to read the documentation and do an exercise. 
 
 Today I decided I would build a sample app that would allow users to create a gallery and add photos to it.
 
@@ -86,4 +86,4 @@ The above template works great for the index action, but not so great for the cr
       ...
     end
 
-And there it is, that was easy right? Setting the app to do uploads on rails is quite simple with paperclip, to look at the whole sample application take a look at it here
+And there it is, that was easy right? Setting the app to do uploads on rails is quite simple with paperclip. 
