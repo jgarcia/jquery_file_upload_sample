@@ -6,13 +6,13 @@ Today I decided I would build a sample app that would allow users to create a ga
 
 In addition to the jquery file upload plugin I am using a few gems to develop the rails application quite faster.
 
-Paperclip: This is a great app for uploading files to the server 
+[Paperclip](https://github.com/thoughtbot/paperclip): This is a great app for uploading files to the server 
 
-twitter-bootstrap-rails: This gem allows you to work with twitter bootstrap very easily and puts the required files in the asset pipeline
+[twitter-bootstrap-rails](https://github.com/seyhunak/twitter-bootstrap-rails): This gem allows you to work with twitter bootstrap very easily and puts the required files in the asset pipeline
 
-simple_form: I added this because I've noticed that forms become much less cluttered with it besides it has some great helpers for twitter bootstrap
+[simple_form](https://github.com/plataformatec/simple_form): I added this because I've noticed that forms become much less cluttered with it besides it has some great helpers for twitter bootstrap
 
-Jbuilder: This is a great templating gem for json it will be quite useful to format the results in the way that the plugin requires it for the default demo.
+[Jbuilder](https://github.com/rails/jbuilder): This is a great templating gem for json it will be quite useful to format the results in the way that the plugin requires it for the default demo.
 
 ## So how do I get my multi file uploader working
 
