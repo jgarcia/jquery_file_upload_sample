@@ -22,10 +22,10 @@ The first time I was writing this post I listed all the steps for set up of the 
 
 I am using paperclip to upload files easily, the configuration for this is quite simple on the model
 
-class Photo < ActiveRecord::Base
-	...
-	has_attached_file :file
-end
+    class Photo < ActiveRecord::Base
+    	...
+    	has_attached_file :file
+    end
 
 ### The view
 
@@ -35,56 +35,55 @@ I am using the view provided on the demo, also included in the zip file when you
 
 The default layout for the plugin demo requires you to return a json with the following format.
 
-[
-	{
-		"name": "photo.png",
-		"size": 20619,
-		"url": "http://url/to/photo.png"
-		"thumbnail_url": "http://url/to/photo_thumb.png"
-		"delete_url": "http://url/to/delete",
-		"delete_type": "DELETE"
-	}
-]
+    [
+    	{
+    		"name": "photo.png",
+    		"size": 20619,
+    		"url": "http://url/to/photo.png"
+    		"thumbnail_url": "http://url/to/photo_thumb.png"
+    		"delete_url": "http://url/to/delete",
+    		"delete_type": "DELETE"
+    	}
+    ]
 
 
 By default the scaffolded controller returns a json representation of the object but it does not match this one, for that we will use jbuilder with the following code
 
-on index.json.jbuilder
+    # index.json.jbuilder
 
-json.array!(@photos) do |json, photo|
-  json.name photo.file_file_name
-  json.size photo.file_file_size
-  json.url photo.file.url(:original)
-  json.thumbnail_url photo.file.url(:thumb)
-  json.delete_url album_photo_url(@album, photo)
-  json.delete_type "DELETE"
-end
+    json.array!(@photos) do |json, photo|
+      json.name photo.file_file_name
+      json.size photo.file_file_size
+      json.url photo.file.url(:original)
+      json.thumbnail_url photo.file.url(:thumb)
+      json.delete_url album_photo_url(@album, photo)
+      json.delete_type "DELETE"
+    end
 
 ### The controller
 
 The above template works great for the index action, but not so great for the create action, as the uploader expects only one file instance inside the json array so the normal redirect on the create action won't do; instead we can assign assign the recently saved @photo into @photos as an array and render the index if the format required is json. 
 
-class PhotosController < ApplicationController
-	...
-	def index
-		@photos = @album.photos
-	end
-	...
-	def create
-	    @photo = @album.photos.new(params[:photo])
+    class PhotosController < ApplicationController
+      ...
+      def index
+      	@photos = @album.photos
+      end
+      ...
+      def create
+          @photo = @album.photos.new(params[:photo])
 
-	    if @photo.save
-	      respond_to do |format|
-	        format.html {redirect_to album_photos_path(@album), notice: 'Photo was successfully created.'}
-	        @photos = [@photo]
-	        format.json {render 'index'}
-	      end
-	    else
-	      render 'new'
-	    end
-	end
-	...
-end
+          if @photo.save
+            respond_to do |format|
+              format.html {redirect_to album_photos_path(@album), notice: 'Photo was successfully created.'}
+              @photos = [@photo]
+              format.json {render 'index'}
+            end
+          else
+            render 'new'
+          end
+      end
+      ...
+    end
 
 And there it is, that was easy right? Setting the app to do uploads on rails is quite simple with paperclip, to look at the whole sample application take a look at it here
-
