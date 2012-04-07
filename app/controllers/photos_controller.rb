@@ -4,11 +4,6 @@ class PhotosController < ApplicationController
   # GET /photos.json
   def index
     @photos = @album.photos
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @photos }
-    end
   end
 
   # GET /photos/1
@@ -43,15 +38,26 @@ class PhotosController < ApplicationController
   def create
     @photo = @album.photos.new(params[:photo])
 
-    respond_to do |format|
-      if @photo.save
-        format.html { redirect_to @album, notice: 'Photo was successfully created.' }
-        format.json { render json: @photo, status: :created, location: @photo }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @photo.errors, status: :unprocessable_entity }
+    if @photo.save
+      respond_to do |format|
+        format.html {redirect_to album_photos_path(@album), notice: 'Photo was successfully created.'}
+        @photos = [@photo]
+        format.json {render 'index'}
       end
+    else
+      render 'new'
     end
+
+    # respond_to do |format|
+    #   if @photo.save
+    #     format.html { redirect_to @album, notice: 'Photo was successfully created.' }
+    #     format.json { render json: @photo, status: :created, location: album_photo_url(@album, @photo)}
+    #     # format.json {status: :created}
+    #   else
+    #     format.html { render action: "new" }
+    #     format.json { render json: @photo.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PUT /photos/1
