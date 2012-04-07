@@ -12,7 +12,7 @@ In addition to the jquery file upload plugin I use a few gems to develop the rai
 
 ## So how do I get my multi file uploader working
 
-The first time I was writing this post I listed all the steps for set up of the app but instead I am going to cheat and only going to point to the important parts. 
+The first time I was writing this post I listed all the steps for set up of the app but it was going to turn into a TLDR; post so instead I will focus on the important parts of the app and you can just go checkout the repository to see the details. 
 
 ### The model
 
