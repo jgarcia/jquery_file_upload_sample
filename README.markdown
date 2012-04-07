@@ -36,14 +36,14 @@ I am using the view provided on the demo, also included in the zip file when you
 The default layout for the plugin demo requires you to return a json with the following format.
 
     [
-    	{
-    		"name": "photo.png",
-    		"size": 20619,
-    		"url": "http://url/to/photo.png"
-    		"thumbnail_url": "http://url/to/photo_thumb.png"
-    		"delete_url": "http://url/to/delete",
-    		"delete_type": "DELETE"
-    	}
+      {
+        "name": "photo.png",
+        "size": 20619,
+        "url": "http://url/to/photo.png"
+        "thumbnail_url": "http://url/to/photo_thumb.png"
+        "delete_url": "http://url/to/delete",
+        "delete_type": "DELETE"
+      }
     ]
 
 
@@ -71,17 +71,17 @@ The above template works great for the index action, but not so great for the cr
       end
       ...
       def create
-          @photo = @album.photos.new(params[:photo])
+        @photo = @album.photos.new(params[:photo])
 
-          if @photo.save
-            respond_to do |format|
-              format.html {redirect_to album_photos_path(@album), notice: 'Photo was successfully created.'}
-              @photos = [@photo]
-              format.json {render 'index'}
-            end
-          else
-            render 'new'
+        if @photo.save
+          respond_to do |format|
+            format.html {redirect_to album_photos_path(@album), notice: 'Photo was successfully created.'}
+            @photos = [@photo]
+            format.json {render 'index'}
           end
+        else
+          render 'new'
+        end
       end
       ...
     end
