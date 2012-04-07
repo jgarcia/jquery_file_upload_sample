@@ -29,7 +29,7 @@
           .container.nav-collapse
             %ul.nav
               %li= link_to "Albums", albums_path
-              - if @album
+              - unless @album.nil? or @album.new_record?
                 %li= link_to @album.title, album_path(@album)
 
     .container
