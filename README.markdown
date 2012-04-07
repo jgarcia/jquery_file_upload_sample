@@ -1,8 +1,6 @@
-For a while I've been having the idea of setting up a multi file upload on a cms application I'm working on; I read about [jquery file upload](http://blueimp.github.com/jQuery-File-Upload/) a while ago, but never got around to read the documentation and do an exercise. 
+For a while I've been having the idea of setting up a multi file upload on a cms application I'm working on; I read about [jquery file upload](http://blueimp.github.com/jQuery-File-Upload/) a while ago, but never got around to read the documentation and do an exercise. Today I decided I would build a sample app that would allow users to create a gallery and add photos to it. 
 
-Today I decided I would build a sample app that would allow users to create a gallery and add photos to it.
-
-In addition to the jquery file upload plugin I am using a few gems to develop the rails application quite faster.
+In addition to the jquery file upload plugin I use a few gems to develop the rails application a bit faster.
 
 [Paperclip](https://github.com/thoughtbot/paperclip): This is a great app for uploading files to the server 
 
